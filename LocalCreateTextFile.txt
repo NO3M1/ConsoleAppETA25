@@ -1,1 +1,3 @@
 ﻿This is a VCS Test. Initially added
+
+This should be visibe in the second commit
