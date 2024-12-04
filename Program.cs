@@ -101,18 +101,28 @@ Console.WriteLine($"The result of ADDITION is: {1 + 1} ");
             Console.WriteLine($"The value of 'x' from Session5 is: {Session5.x}");
             Console.WriteLine($"The value of 'y' from Session5 is: {Session5.y}");
             Session5.AddXAndY();  //apel al clasei
-            //Console.WriteLine($"The result of heading x and y is: {Session5.AddTwoIntegers(9, 15)}"); //24
+                                  //Console.WriteLine($"The result of heading x and y is: {Session5.AddTwoIntegers(9, 15)}"); //24
+
+
+
+Console.WriteLine( " ");
+
+
+//PERSONTEST
+
+//PersonTest.StoreDetails();
+//PersonTest.DisplayDetails();    
+//PersonTest.UserAgeAfter20();
+PersonTest.DisplayUserDetails();
+
+Console.WriteLine(" ");
+
+//PERSONTEST2
+
+PersonTest2.ConsoleDetails();
+PersonTest2.DisplayUserDetails();    
 
 
 
 
-
-            Console.ReadKey();
-        
-    
-
-
-
-
-
-
+ Console.ReadKey();
