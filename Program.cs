@@ -113,14 +113,14 @@ Console.WriteLine( " ");
 //PersonTest.StoreDetails();
 //PersonTest.DisplayDetails();    
 //PersonTest.UserAgeAfter20();
-PersonTest.DisplayUserDetails();
+//PersonTest.DisplayUserDetails();
 
 Console.WriteLine(" ");
 
 //PERSONTEST2
 
-PersonTest2.ConsoleDetails();
-PersonTest2.DisplayUserDetails();    
+//PersonTest2.ConsoleDetails();
+//PersonTest2.DisplayUserDetails();    
 
 
 
