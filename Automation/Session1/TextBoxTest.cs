@@ -75,18 +75,18 @@ namespace ConsoleAppETA25.Automation.Session1
 
             By currentAddressSelector = By.Id("currentAddress");
             IWebElement currentAddress = Driver.FindElement(currentAddressSelector);
-            email.SendKeys(CurrentAddress);
+            currentAddress.SendKeys(CurrentAddress);
 
 
-            By permanentAddressSelector = By.Id("currentAddress");
+            By permanentAddressSelector = By.Id("permanentAddress");
             IWebElement permanentAddress = Driver.FindElement(permanentAddressSelector);
-            email.SendKeys(PermanentAddress);
+            permanentAddress.SendKeys(PermanentAddress);
 
 
 
             // Definim si initializam selector-ul pentru "Submit" button
             By submitButtonSelector = By.Id("submit");
-            IWebElement submitButton = Driver.FindElement(submitButtonSelector);.
+            IWebElement submitButton = Driver.FindElement(submitButtonSelector);
 
             // Scroll
             jsExecutor.ExecuteScript("window.scrollTo(0, 1000);");
@@ -97,6 +97,10 @@ namespace ConsoleAppETA25.Automation.Session1
             // Definim si initializam selector-ul pentru "Name" output
             By nameOutputSelector = By.Id("name");
             IWebElement nameOutput = Driver.FindElement(nameOutputSelector);
+
+            // Scroll
+            jsExecutor.ExecuteScript("window.scrollTo(0, 1000);");
+
 
             Thread.Sleep(5000);
 
