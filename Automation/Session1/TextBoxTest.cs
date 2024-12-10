@@ -77,11 +77,9 @@ namespace ConsoleAppETA25.Automation.Session1
             IWebElement currentAddress = Driver.FindElement(currentAddressSelector);
             currentAddress.SendKeys(CurrentAddress);
 
-
             By permanentAddressSelector = By.Id("permanentAddress");
             IWebElement permanentAddress = Driver.FindElement(permanentAddressSelector);
             permanentAddress.SendKeys(PermanentAddress);
-
 
 
             // Definim si initializam selector-ul pentru "Submit" button
@@ -101,11 +99,28 @@ namespace ConsoleAppETA25.Automation.Session1
             // Scroll
             jsExecutor.ExecuteScript("window.scrollTo(0, 1000);");
 
+            string emailOutput =  Driver.FindElement(By.Id("email")).Text;
+            string CurrentAddressOutput =  Driver.FindElement(By.XPath("//p[@id='currentAddress']")).Text;
+            string PermanentAddressOutput =  Driver.FindElement(By.XPath("//p[@id='permanentAddress']")).Text;
+
+
+
 
             Thread.Sleep(5000);
 
             // Assert
             Assert.That(nameOutput.Text.Contains(FullName));
+            Assert.That(emailOutput.Contains(Email));   
+            Assert.That(CurrentAddressOutput.Contains(CurrentAddress));  
+            Assert.That(PermanentAddressOutput.Contains(PermanentAddress));  
+
+
+
+            /*
+             examples:
+             Assert.That(pageTitle, Is.EqualTo("Home page"));
+             Assert.That(email.Displayed, Is.True);      
+            */
         }
 
         [TearDown]

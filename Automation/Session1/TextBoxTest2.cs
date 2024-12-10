@@ -17,7 +17,7 @@ namespace ConsoleAppETA25.Automation.Session1
 
 
         [Test]
-        public void Test() 
+        public void myFirstSeleniumTest() 
         
         { 
             driver = new ChromeDriver();
@@ -30,11 +30,14 @@ namespace ConsoleAppETA25.Automation.Session1
             IWebElement elementButton = driver.FindElement(By.XPath("//h5[text()='Elements']"));
             elementButton.Click();
 
+
             IWebElement textBoxButton = driver.FindElement(By.XPath("//*[text()='Text Box']"));
             textBoxButton.Click();
 
             IWebElement firstName = driver.FindElement(By.Id("userName"));
             firstName.SendKeys("Noemi Sz");
+            //driver.FindElement(By.Id("userName")).SendKeys("Noemi Sz");
+
 
             IWebElement email = driver.FindElement(By.Id("userEmail"));
             email.SendKeys("test@test.com");
