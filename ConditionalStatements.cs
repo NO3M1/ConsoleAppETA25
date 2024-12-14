@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
+using NUnit.Framework.Constraints;
 
 namespace ConsoleAppETA25
 {
@@ -81,6 +82,70 @@ namespace ConsoleAppETA25
             Console.WriteLine("Last output line of code");
 
         }
+
+        [Test]
+        public static void MetodaIf()
+        {
+            IfVerificareNumar(5, 12);
+            IfVerificareNumar(21, 5);
+            ElseIFCompareDigits(5);
+            SwitchVerificareMasina("BMW");
+
+
+
+
+        }
+
+        public static void IfVerificareNumar(int x, int y)
+        {
+            if (x < y)
+            {
+                Console.WriteLine($"Numarul {x} este mai mic decat {y}");
+            }
+            else
+            {
+                Console.WriteLine($"Numarul {x} este mai mare decat {y}");
+            }
+        }
+
+
+        public static void ElseIFCompareDigits (int x)
+        {
+            if (x < 5)
+            {
+                Console.WriteLine($"Numarul {x} este mai mic decat 5"); 
+            }
+            else if (x > 5)
+            {
+                Console.WriteLine($"Numarul {x} este mai mare decat 5");
+            }
+            else //if (x == 5)
+            {
+                Console.WriteLine($"Numarul {x} este egal cu 5");
+            }
+
+        }
+
+        public static void SwitchVerificareMasina(string masina)
+        {
+           switch (masina)
+            {
+                case "Mercedes":
+                    Console.WriteLine("Este disponibil Mercedes");
+                        break;
+                case "Opel":
+                    Console.WriteLine("Este disponibil Opel");
+                        break;
+                case "BMW":
+                    Console.WriteLine("Este disponibil BWM");
+                    break;
+                default:
+                    Console.WriteLine("Masina nu este disponibila");
+                    break;
+            }
+        }
+
+
 
 
     }

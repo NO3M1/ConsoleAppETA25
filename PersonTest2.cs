@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
+using Microsoft.VisualBasic.FileIO;
+using NUnit.Framework;
 
 namespace ConsoleAppETA25
 {
@@ -34,6 +36,8 @@ namespace ConsoleAppETA25
 
         }
 
+      
+
         public static int DisplayUserAgeAfterX(int x)
         {
             var result = Age + x;
@@ -53,7 +57,40 @@ namespace ConsoleAppETA25
             DisplayUserAgeAfterX(19);
 
         }
-    
+
       
+        public static void IsOld()
+        {
+            if (Age >= 100)
+            {
+                Console.WriteLine("You are ancient!");
+            }   
+            else if (Age >= 50)
+            {
+                Console.WriteLine("You are old!");
+
+            }
+            else if (Age <50)
+            {
+                Console.WriteLine("You are still young!");
+            }
+            else
+            {
+                Console.WriteLine("Unspecified category");
+            }
+            
+        }
+
+        [Test]
+        public static void Testing()
+        {
+            ConsoleDetails();
+            DisplayUserDetails();
+            IsOld();
+
+        }
+
+        /*i need help how to execute the code*/
+
     }
 }
