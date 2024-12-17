@@ -19,7 +19,7 @@ namespace ConsoleAppETA25
         public static string Gender;
 
         //reading from console
-
+        
         public static void ConsoleDetails()
         {
             Console.WriteLine("Please input your First name:");
@@ -57,40 +57,13 @@ namespace ConsoleAppETA25
             DisplayUserAgeAfterX(19);
 
         }
-
       
-        public static void IsOld()
-        {
-            if (Age >= 100)
-            {
-                Console.WriteLine("You are ancient!");
-            }   
-            else if (Age >= 50)
-            {
-                Console.WriteLine("You are old!");
-
-            }
-            else if (Age <50)
-            {
-                Console.WriteLine("You are still young!");
-            }
-            else
-            {
-                Console.WriteLine("Unspecified category");
-            }
-            
-        }
-
-        [Test]
-        public static void Testing()
+        public static void Test()
         {
             ConsoleDetails();
-            DisplayUserDetails();
-            IsOld();
+            DisplayUserDetails();   
 
         }
-
-        /*i need help how to execute the code*/
-
+           
     }
 }

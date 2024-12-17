@@ -17,4 +17,8 @@
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="131.0.6778.8700" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Automation\Session3\" />
+  </ItemGroup>
+
 </Project>
