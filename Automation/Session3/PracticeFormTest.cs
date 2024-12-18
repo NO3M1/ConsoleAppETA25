@@ -21,7 +21,7 @@ namespace ConsoleAppETA25.Automation.Session3
             public const string Age = "12";
             public const string Salary = "78552";
             public const string Department = "Software dev";
-
+        
 
 
         [SetUp]
