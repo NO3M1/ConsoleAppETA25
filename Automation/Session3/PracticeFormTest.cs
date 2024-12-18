@@ -49,7 +49,6 @@ namespace ConsoleAppETA25.Automation.Session3
 
             By practiceFormSelector = By.XPath("//span[text()='Practice Form']");
             IWebElement practiceFormOption = Driver.FindElement(practiceFormSelector);
-            practiceFormOption.Click();
 
             By genderMaleSelector = By.Id("gender-radio-1");
             IWebElement genderMaleInput = Driver.FindElement(genderMaleSelector);
