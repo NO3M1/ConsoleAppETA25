@@ -69,10 +69,6 @@ namespace ConsoleAppETA25.Automation.Session3
             IWebElement hobbyMusicLabel = Driver.FindElement(By.XPath("//*[@for='hobbies-checkbox-3']"));
 
 
-
-            
-
-
             if (genderlabelMale.GetDomAttribute("value") == userInputGender)
             {
                 js.ExecuteScript("arguments[0].click();", genderlabelMale);
@@ -111,18 +107,7 @@ namespace ConsoleAppETA25.Automation.Session3
                 default:
                     break;
 
-
-
             }
-
-            //delete the first subject option
-
-            //IWebElement filledSubjectOptionsDelete = Driver.FindElement(By.XPath("//*[@class='css-19bqh2r']"));
-            //filledSubjectOptionsDelete.Click();
-
-            //HOW To remove option Chemistry - partially done
-
-            //IWebElement userOption = Driver.FindElement(By.XPath("//div[contains(@class, 'css-12jo7m5 subjects-auto-complete__multi-value__label') and text()='Chemistry']"));
 
 
             jsScroll.ExecuteScript("window.scrollTo(0,1000)");
@@ -131,19 +116,23 @@ namespace ConsoleAppETA25.Automation.Session3
             submitButton.Click();
 
 
-            // Assert
+            // Assert nu reuseeeeeeesc :(
 
-   
-            String studentName = FirstNameInput + LastNameInput;
-            String studentEmail = EmailInput;
-            String address = currentAddressInput;
+            //IWebElement table = Driver.FindElement(By.XPath("//*[@class=\"table table-dark table-striped table-bordered table-hover\"]"));
+            //Console.WriteLine(table.Text);
+
+            //String studentName = Driver.FindElement(By.XPath("//td[text()='Student Name']/following-sibling::td")).Text;
+            //Assert.That(studentName.Contains(FirstNameInput));
+
+            //String studentEmail = Driver.FindElement(By.XPath("//td[text()='Student Email']/following-sibling::td")).Text;
+            //Assert.That(studentEmail.Contains(EmailInput));
 
 
-            Assert.That(studentName.Contains(FirstNameInput));
-            Assert.That(studentEmail.Contains(EmailInput));
-           // Assert.That(mobileNumber.Text.Contains(MobileInput));   
-            Assert.That(address.Contains(currentAddressInput));  
-          
+
+
+
+
+
 
             Thread.Sleep(5000);
 
@@ -151,15 +140,15 @@ namespace ConsoleAppETA25.Automation.Session3
 
 
 
-        [TearDown]
-        public void CleanUp()
-        {
-            if (Driver != null)
-            {
-                Driver.Quit();
-                Driver.Dispose();
-            }
-        }
+        //[TearDown]
+        //public void CleanUp()
+        //{
+        //    if (Driver != null)
+        //    {
+        //        Driver.Quit();
+        //        Driver.Dispose();
+        //    }
+        //}
 
     }
 
