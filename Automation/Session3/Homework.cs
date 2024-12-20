@@ -15,12 +15,8 @@ namespace ConsoleAppETA25.Automation.Session3
 
         public IWebDriver Driver;
         public const string BaseUrl = "https://demoqa.com/";
+        IJavaScriptExecutor js;
 
-        //public const string FirstName = "Noemi";
-        //public const string LastName = "Szzzz";
-        //public const string Email = "ns-test@email.com";
-        //public const string Mobile = "0725698798";
-        //public const string CurrentAddress = "Romania";
 
         [SetUp]
         public void Setup()
@@ -28,24 +24,24 @@ namespace ConsoleAppETA25.Automation.Session3
             Driver = new ChromeDriver();
             Driver.Navigate().GoToUrl(BaseUrl);
             Driver.Manage().Window.Maximize();
+            js = (IJavaScriptExecutor)Driver;
+            js.ExecuteScript("window.scrollTo(0,500)");
         }
 
-        [TestCase("Ion","A","test1@test.com","07456988", "Romania", "Male", "Reading")]
-        [TestCase("Ana","M", "test2@test.com", "07859966", "USA", "Female", "Sports")]
-        [TestCase("Noemi", "Sz", "test3@test.com", "07466254", "Australia", "Other", "Music")]
+        [TestCase("Ion","A","test1@test.com","0745698898", "Romania", "Male", "Reading")]
+        [TestCase("Ana","M", "test2@test.com", "0785996689", "USA", "Female", "Sports")]
+        [TestCase("Noemi", "Sz", "test3@test.com", "0746625489", "Australia", "Other", "Music")]
 
 
         public void PracticeFormTest(string FirstNameInput, string LastNameInput, string EmailInput, string MobileInput, string currentAddressInput, string userInputGender, string HobbiesInput)
         {
-            IJavaScriptExecutor js = (IJavaScriptExecutor)Driver;
-            js.ExecuteScript("window.scrollTo(0,500)");
-
-
+       
+           
             IWebElement formsButton = Driver.FindElement(By.XPath("//div[@class='card mt-4 top-card'][2]"));
             formsButton.Click();
 
-            IWebElement elementForms = Driver.FindElement(By.XPath("//span[text()='Practice Form']"));
-            elementForms.Click();
+            IWebElement precticeForm = Driver.FindElement(By.XPath("//span[text()='Practice Form']"));
+            precticeForm.Click();
 
             IWebElement firstName = Driver.FindElement(By.Id("firstName"));
             firstName.SendKeys(FirstNameInput);
@@ -121,31 +117,38 @@ namespace ConsoleAppETA25.Automation.Session3
 
             //delete the first subject option
 
-            IWebElement filledSubjectOptionsDelete = Driver.FindElement(By.XPath("//*[@class='css-19bqh2r']"));
-            filledSubjectOptionsDelete.Click();
+            //IWebElement filledSubjectOptionsDelete = Driver.FindElement(By.XPath("//*[@class='css-19bqh2r']"));
+            //filledSubjectOptionsDelete.Click();
 
-           /* HOW To remove option Chemistry
+            //HOW To remove option Chemistry - partially done
 
-            IWebElement userOption = Driver.FindElement(By.XPath("//*[@class='css-xb97g8 subjects-auto-complete__multi-value__remove']"));
-
-            if (userOption != null) 
-               {
-                userOption.Click();
-               }
-           */ 
+            //IWebElement userOption = Driver.FindElement(By.XPath("//div[contains(@class, 'css-12jo7m5 subjects-auto-complete__multi-value__label') and text()='Chemistry']"));
 
 
+            jsScroll.ExecuteScript("window.scrollTo(0,1000)");
+
+            IWebElement submitButton = Driver.FindElement(By.Id("submit"));
+            submitButton.Click();
 
 
+            // Assert
+
+   
+            String studentName = FirstNameInput + LastNameInput;
+            String studentEmail = EmailInput;
+            String address = currentAddressInput;
 
 
-
-
-
+            Assert.That(studentName.Contains(FirstNameInput));
+            Assert.That(studentEmail.Contains(EmailInput));
+           // Assert.That(mobileNumber.Text.Contains(MobileInput));   
+            Assert.That(address.Contains(currentAddressInput));  
+          
 
             Thread.Sleep(5000);
 
         }
+
 
 
         [TearDown]
@@ -158,10 +161,7 @@ namespace ConsoleAppETA25.Automation.Session3
             }
         }
 
-
-
-
-
-
     }
+
+
 }
