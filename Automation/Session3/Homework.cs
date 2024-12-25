@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
+using static NUnit.Framework.Constraints.Tolerance;
 
 namespace ConsoleAppETA25.Automation.Session3
 {
@@ -84,11 +86,18 @@ namespace ConsoleAppETA25.Automation.Session3
 
 
             IWebElement subjectElement = Driver.FindElement(By.Id("subjectsInput"));
+            //subjectElement.SendKeys(subjectInput);
+            //subjectElement.SendKeys(Keys.Enter);
+
+
+            //other way
             subjectElement.SendKeys("English");
             subjectElement.SendKeys(Keys.Enter);
             subjectElement.SendKeys("C");
             subjectElement.SendKeys(Keys.ArrowDown);
             subjectElement.SendKeys(Keys.Enter);
+
+
 
             IJavaScriptExecutor jsScroll = (IJavaScriptExecutor)Driver;
             jsScroll.ExecuteScript("window.scrollTo(0,500)");
@@ -115,26 +124,47 @@ namespace ConsoleAppETA25.Automation.Session3
             IWebElement submitButton = Driver.FindElement(By.Id("submit"));
             submitButton.Click();
 
+            // ASSERT
 
-            // Assert nu reuseeeeeeesc :(
-
-            //IWebElement table = Driver.FindElement(By.XPath("//*[@class=\"table table-dark table-striped table-bordered table-hover\"]"));
-            //Console.WriteLine(table.Text);
-
-            //String studentName = Driver.FindElement(By.XPath("//td[text()='Student Name']/following-sibling::td")).Text;
-            //Assert.That(studentName.Contains(FirstNameInput));
-
-            //String studentEmail = Driver.FindElement(By.XPath("//td[text()='Student Email']/following-sibling::td")).Text;
-            //Assert.That(studentEmail.Contains(EmailInput));
+            //studentEmail
+            string expectedEmailValue = EmailInput;
+            var wait0 = new WebDriverWait(Driver, TimeSpan.FromSeconds(50));
+            string actualEmailValue = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[2]//td[2]")).Text;
+            //Assert.That(expectedValue, Is.EqualTo(actualValue));
+            Assert.That(actualEmailValue, Is.EqualTo(expectedEmailValue));
 
 
+            //Gender
+            //string expectedGender = userInputGender;
+            //string actualGender = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[3]//td[2]")).Text;
+            //Assert.That(expectedGender, Is.EqualTo(actualGender));
+
+            // Gender
+            string expectedGender = userInputGender;
+            var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(50));
+            string actualGender = Driver.FindElement(By.XPath("//table[contains(@class, 'table-dark')]//tr[3]//td[2]")).Text;
+            Assert.That(actualGender, Is.EqualTo(expectedGender),
+            $"Gender mismatch: Expected '{expectedGender}', but was '{actualGender}'.");
+       
+
+            //Mobile
+            string expectedValueMobile = MobileInput;
+            string actualValueMobile = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[4]//td[2]")).Text;
+            Assert.That(expectedValueMobile, Is.EqualTo(actualValueMobile));
+
+            //Hobbies 
+            string expectedValueHobbies = HobbiesInput;
+            string actualValueHobbies = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[7]//td[2]")).Text;
+            Assert.That(expectedValueHobbies, Is.EqualTo(actualValueHobbies));
+
+            //Address
+            string expectedValueAddress = currentAddressInput;
+            string actualValueAddress = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[9]//td[2]")).Text;
+            Assert.That(expectedValueAddress, Is.EqualTo(actualValueAddress));
 
 
 
-
-
-
-            Thread.Sleep(5000);
+            Thread.Sleep(1000);
 
         }
 
