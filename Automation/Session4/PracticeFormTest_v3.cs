@@ -68,7 +68,9 @@ namespace ConsoleAppETA25.Automation.Session4
 
             //IWebElement subjectDeleteButtonV5 = Driver.FindElement(By.XPath($"//div[contains(@class,\"multiValue\")][./div[text()=\"{userInputSubject2}\"]]/div[2]"));
 
+
             RemoveSubject(userInputSubject1);
+
 
             // Sleep
             Thread.Sleep(5000);
@@ -92,6 +94,8 @@ namespace ConsoleAppETA25.Automation.Session4
 
             //sleep
             Thread.Sleep(5000);
+
+
 
         }
 

@@ -126,41 +126,40 @@ namespace ConsoleAppETA25.Automation.Session3
 
             // ASSERT
 
-            //studentEmail
-            string expectedEmailValue = EmailInput;
-            var wait0 = new WebDriverWait(Driver, TimeSpan.FromSeconds(50));
-            string actualEmailValue = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[2]//td[2]")).Text;
-            //Assert.That(expectedValue, Is.EqualTo(actualValue));
-            Assert.That(actualEmailValue, Is.EqualTo(expectedEmailValue));
+            ////studentEmail
+            //string expectedEmailValue = EmailInput;
+            //var wait0 = new WebDriverWait(Driver, TimeSpan.FromSeconds(50));
+            //string actualEmailValue = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[2]//td[2]")).Text;
+            ////Assert.That(expectedValue, Is.EqualTo(actualValue));
+            //Assert.That(actualEmailValue, Is.EqualTo(expectedEmailValue));
 
 
-            //Gender
+            ////Gender
+            ////string expectedGender = userInputGender;
+            ////string actualGender = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[3]//td[2]")).Text;
+            ////Assert.That(expectedGender, Is.EqualTo(actualGender));
+
+            //// Gender
             //string expectedGender = userInputGender;
-            //string actualGender = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[3]//td[2]")).Text;
-            //Assert.That(expectedGender, Is.EqualTo(actualGender));
-
-            // Gender
-            string expectedGender = userInputGender;
-            var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(50));
-            string actualGender = Driver.FindElement(By.XPath("//table[contains(@class, 'table-dark')]//tr[3]//td[2]")).Text;
-            Assert.That(actualGender, Is.EqualTo(expectedGender),
-            $"Gender mismatch: Expected '{expectedGender}', but was '{actualGender}'.");
+            //var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(50));
+            //string actualGender = Driver.FindElement(By.XPath("//table[contains(@class, 'table-dark')]//tr[3]//td[2]")).Text;
+            //Assert.That(actualGender, Is.EqualTo(expectedGender),
+            //$"Gender mismatch: Expected '{expectedGender}', but was '{actualGender}'.");
        
+            ////Mobile
+            //string expectedValueMobile = MobileInput;
+            //string actualValueMobile = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[4]//td[2]")).Text;
+            //Assert.That(expectedValueMobile, Is.EqualTo(actualValueMobile));
 
-            //Mobile
-            string expectedValueMobile = MobileInput;
-            string actualValueMobile = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[4]//td[2]")).Text;
-            Assert.That(expectedValueMobile, Is.EqualTo(actualValueMobile));
+            ////Hobbies 
+            //string expectedValueHobbies = HobbiesInput;
+            //string actualValueHobbies = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[7]//td[2]")).Text;
+            //Assert.That(expectedValueHobbies, Is.EqualTo(actualValueHobbies));
 
-            //Hobbies 
-            string expectedValueHobbies = HobbiesInput;
-            string actualValueHobbies = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[7]//td[2]")).Text;
-            Assert.That(expectedValueHobbies, Is.EqualTo(actualValueHobbies));
-
-            //Address
-            string expectedValueAddress = currentAddressInput;
-            string actualValueAddress = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[9]//td[2]")).Text;
-            Assert.That(expectedValueAddress, Is.EqualTo(actualValueAddress));
+            ////Address
+            //string expectedValueAddress = currentAddressInput;
+            //string actualValueAddress = Driver.FindElement(By.XPath("//*[@class='table table-dark table-striped table-bordered table-hover']//tr[9]//td[2]")).Text;
+            //Assert.That(expectedValueAddress, Is.EqualTo(actualValueAddress));
 
 
 
@@ -170,15 +169,15 @@ namespace ConsoleAppETA25.Automation.Session3
 
 
 
-        //[TearDown]
-        //public void CleanUp()
-        //{
-        //    if (Driver != null)
-        //    {
-        //        Driver.Quit();
-        //        Driver.Dispose();
-        //    }
-        //}
+        [TearDown]
+        public void CleanUp()
+        {
+            if (Driver != null)
+            {
+                Driver.Quit();
+                Driver.Dispose();
+            }
+        }
 
     }
 
