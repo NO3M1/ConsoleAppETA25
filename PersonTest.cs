@@ -9,16 +9,37 @@ using NUnit.Framework;
 
 namespace ConsoleAppETA25
 {
-    internal class PersonTest
+
+    /*PRACTICE
+       In the “Person” class add the following:
+       •
+       A class attribute “List<string> Skills“ – to store the list of skills for the person.
+       •
+       A parameterized method to add a skill to the person.
+           •
+       This method also outputs to the console the name of the newly added skill.
+       •
+       A method to output to console all the skills of the person:
+       •
+       Use either for or foreach statements to output the list to console.
+       •
+       If the currently output skill is “Ninja” DO NOT display it.
+       •
+       If the currently output skill is “CIA” then exit the loop and output “Classified information, no further skills are displayed!”.*/
+
+    public static class PersonTest
     {
         // person details hardcoded
 
         public static string FirstName = "Noemi";
         public static string LastName = "Sz";
-        public static int Age = 1582;
-        public static string Gender = "female";
+        public static int Age = 15;
+        public static string Gender = "Female";
+        
+        
 
-   
+        public static List<string> Skills = new List<string>();
+
         public static int UserAgeAfterX(int x)
 
         {
@@ -85,14 +106,60 @@ namespace ConsoleAppETA25
 
         }
 
-     
+        [Test]
         public static void TestTheAbove()
         {
+
             DisplayUserDetails();
             IsOld();
             ShowGender();
+   
         }
 
+        
+        public static void AddSkills(string skill)
+        {
+            Skills.Add(skill);
+            Console.WriteLine($"The added new skill of {FirstName} is: {skill}");
+        }
+
+
+     
+        public static void DisplaySkills()
+        {
+
+            Console.WriteLine($"{FirstName} has the following skills: ");
+         
+
+            foreach (string skill in Skills)
+            {
+                if (skill == "Ninja")
+                {
+                    continue;
+                }
+
+                if (skill == "CIA")
+                {
+                    Console.WriteLine("Classified information, no further skills are displayed!");
+
+                    break;
+                }
+                Console.Write($"{skill} + :");  // din ceva motiv nu imi afiseaza skillurile 
+            }
+           
+        }
+
+        [Test]
+        public static void AddAndDisplaySkills()
+        {
+            AddSkills("Ninja");
+            AddSkills("CIA");
+            //AddSkills("Reading");
+            //AddSkills("Testing");
+
+            DisplaySkills();
+        }
     }
+
 
 }
