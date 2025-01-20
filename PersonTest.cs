@@ -154,8 +154,8 @@ namespace ConsoleAppETA25
         {
             AddSkills("Ninja");
             AddSkills("CIA");
-            //AddSkills("Reading");
-            //AddSkills("Testing");
+            AddSkills("Reading");
+            AddSkills("Testing");
 
             DisplaySkills();
         }
