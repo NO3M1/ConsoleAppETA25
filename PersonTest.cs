@@ -35,8 +35,8 @@ namespace ConsoleAppETA25
         public static string LastName = "Sz";
         public static int Age = 15;
         public static string Gender = "Female";
-        
-        
+
+
 
         public static List<string> Skills = new List<string>();
 
@@ -113,10 +113,10 @@ namespace ConsoleAppETA25
             DisplayUserDetails();
             IsOld();
             ShowGender();
-   
+
         }
 
-        
+
         public static void AddSkills(string skill)
         {
             Skills.Add(skill);
@@ -124,12 +124,12 @@ namespace ConsoleAppETA25
         }
 
 
-     
+
         public static void DisplaySkills()
         {
 
             Console.WriteLine($"{FirstName} has the following skills: ");
-         
+
 
             foreach (string skill in Skills)
             {
@@ -146,7 +146,7 @@ namespace ConsoleAppETA25
                 }
                 Console.Write($"{skill} + :");  // din ceva motiv nu imi afiseaza skillurile 
             }
-           
+
         }
 
         [Test]
@@ -159,7 +159,51 @@ namespace ConsoleAppETA25
 
             DisplaySkills();
         }
+
+
+
+        /*In the “Person” class add the following:
+        •
+        A “CountTo” parameterized method that receives a number and prints to console all the numbers up to that number:
+        •
+        Use while or do-while statements to output the numbers to console.
+        •
+        If the currently output number is 10 DO NOT display it, instead output “Number skipped!” message.
+        •
+        If the currently output number is 99 then exit the loop and output “Cannot count past 99!”);
+        
+         */
+
+
+        [TestCase(100)]
+        public static void CountToTest(int numbers)
+        {
+            var currentNumber = 0;
+           
+            while (currentNumber <= numbers)
+            {
+              
+
+                currentNumber++;
+                if (currentNumber == 10)
+                {
+                    Console.WriteLine($"Number skipped {currentNumber}");
+                    continue;
+                }
+
+                else if (currentNumber == 99)
+                {
+                    Console.WriteLine("Cannot past 99");
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine($"{currentNumber}");
+                }
+                
+            }
+            Console.WriteLine("Exited the WHILE loop");
+        }
+
     }
-
-
 }
