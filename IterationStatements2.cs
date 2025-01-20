@@ -116,5 +116,30 @@ namespace ConsoleAppETA25
             Console.WriteLine("Exited the DO-WHILE loop");
         }
 
+
+        [Test]
+        public static void WhileContinueTest()
+        {
+            List<int> list = new List<int>() { 1, 2, 3, 4, 4, 5, 6, 6, 7 };
+            int i = 0;
+
+            while (i < list.Count) 
+            {
+                Console.WriteLine($"The value for list[i] is {list[i]}");
+
+
+                if (list[i] == 6)
+                {
+                    i++;
+                    Console.WriteLine("Skipping the list item");
+                    continue;
+                }
+                i++;
+
+            }
+         
+            Console.WriteLine("Exited the DO-WHILE loop");
+        }
+
     }
 }
