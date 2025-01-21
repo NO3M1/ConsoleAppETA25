@@ -128,7 +128,7 @@ namespace ConsoleAppETA25
         public static void DisplaySkills()
         {
 
-            Console.WriteLine($"{FirstName} has the following skills: ");
+            Console.WriteLine($"{FirstName} has the following skills: " );
 
 
             foreach (string skill in Skills)
@@ -137,15 +137,17 @@ namespace ConsoleAppETA25
                 {
                     continue;
                 }
+                Console.WriteLine(skill);
 
                 if (skill == "CIA")
                 {
                     Console.WriteLine("Classified information, no further skills are displayed!");
-
+                    
                     break;
                 }
-                Console.Write($"{skill} + :");  // din ceva motiv nu imi afiseaza skillurile 
+               
             }
+
 
         }
 
@@ -153,12 +155,13 @@ namespace ConsoleAppETA25
         public static void AddAndDisplaySkills()
         {
             AddSkills("Ninja");
-            AddSkills("CIA");
             AddSkills("Reading");
-            AddSkills("Testing");
+            AddSkills("Testing"); 
+            AddSkills("CIA");
 
             DisplaySkills();
         }
+
 
 
 
