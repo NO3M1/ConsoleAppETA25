@@ -77,7 +77,7 @@ namespace ConsoleAppETA25.Automation.Session5
             List<IWebElement> gridValues = Driver.FindElements(By.XPath("//*[@class=\"create-grid\"]")).ToList();
 
             //afisare lista 
-            for (int i = 0; i <= gridValues.Count; i++)
+    /*        for (int i = 0; i <= gridValues.Count; i++)
             {
                 Console.WriteLine($"Elementul cu nr i este {i}");
                 Console.WriteLine(gridValues[i].Text);
@@ -103,21 +103,11 @@ namespace ConsoleAppETA25.Automation.Session5
                     Console.WriteLine(matrix[i,j]);
                 }
             }
-
+*/
             
-
-
-
-
-        
-
-
-
 
             Thread.Sleep(5000);
         }
-
-       
 
 
         [TearDown]
@@ -132,31 +122,3 @@ namespace ConsoleAppETA25.Automation.Session5
     }
 
 }
-/*public static void NestedLoopTest()
-       {
-           var personList = new List<string>() { "Radu", "Marius", "Iulian", "Noemi", "Romana" };
-
-           var favoriteFoods = new List<string>() { "Chicken", "Shaorma", "Pizza", "Fried Potatoes", "Sarmale", "Mici" };
-
-           for (int i = 0; i < personList.Count; i++)
-           {
-               var person = personList[i];
-
-               if (person == "Marius")
-               {
-                   Console.Write($"{person}'s favorite foods are: ");
-                   for (int j = 0; j < favoriteFoods.Count; j++)
-                   {
-                       var food = favoriteFoods[j];
-                       if (food == "Pizza")
-                       {
-                           Console.Write($"{food}; ");
-                           break;
-                       }
-                       Console.WriteLine($"The current food is: {food} ");
-                   }
-                   Console.WriteLine();
-                   break;
-               }
-
-               Console.WriteLine($"The current person is: {person}");*/
