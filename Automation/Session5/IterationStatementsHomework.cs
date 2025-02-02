@@ -7,9 +7,20 @@ using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using System.Runtime.ConstrainedExecution;
+using OpenQA.Selenium.DevTools.V129.Debugger;
 
 namespace ConsoleAppETA25.Automation.Session5
 {
+
+    /*Similar cu ce am facut astazi, tema va necesita folosirea structurilor repetitive de tip "FOR" / "FOREACH":
+    In pagina de "Interactions > Selectable", in tabul "Grid":
+    Identificati elementele din matrice si folosind structurile repetitive mentionate mai sus:
+    Parcurgeti randurile si coloanele matricii ( nested FOR )
+    Selectati doar elementele impare din matrice (fara a va folosi de textul din interiorul celulelor)
+    Selectarea elementelor se va face pe baza de index.
+    erificati la finalul testului daca elementele impare din matrice au fost selectate*/
+
+
     public class IterationStatementsHomework
     {
         public IWebDriver Driver;
@@ -37,8 +48,20 @@ namespace ConsoleAppETA25.Automation.Session5
             jsExecutor.ExecuteScript("window.scrollTo(0, 500);");
         }
 
-        [Test]
+        public void AccesSortableGrid()
+        {
+            IWebElement InteractionButton = Driver.FindElement(By.XPath("//*[text()=\"Interactions\"]"));
+            InteractionButton.Click();
 
+            List<IWebElement> ListInteractions = Driver.FindElements(By.XPath("//div[@class=\"element-list collapse show\"]/ul[@class=\"menu-list\"]/li[@class=\"btn btn-light \"]")).ToList();
+            ListInteractions[0].Click();
+
+            IWebElement GridButton = Driver.FindElement(By.Id("demo-tab-grid"));
+            GridButton.Click();
+
+        }
+
+        [Test]
     public void SortableList()
 
         {
@@ -60,51 +83,58 @@ namespace ConsoleAppETA25.Automation.Session5
 
 
         [Test]
-        public void SortableGrid()
+        public void SelectOnlyOddNumbers()
         {
-            IWebElement InteractionButton = Driver.FindElement(By.XPath("//*[text()=\"Interactions\"]"));
-            InteractionButton.Click();
+            AccesSortableGrid();
 
-            List<IWebElement> ListInteractions = Driver.FindElements(By.XPath("//div[@class=\"element-list collapse show\"]/ul[@class=\"menu-list\"]/li[@class=\"btn btn-light \"]")).ToList();
-            ListInteractions[0].Click();
+            //select the rows
+            By rowSelector = By.XPath("//div[starts-with(@id,'row')]");
 
-            IWebElement gridButton = Driver.FindElement(By.Id("demo-tab-grid"));
-            gridButton.Click();
+            //List to store the rowlist
+            List<IWebElement> rowList = Driver.FindElements(rowSelector).ToList();
 
-            // //*[@class="create-grid"] - tabel
-            //*[@class=\"grid-container mt-4\"]/div/div"
-
-            List<IWebElement> gridValues = Driver.FindElements(By.XPath("//*[@class=\"create-grid\"]")).ToList();
-
-            //afisare lista 
-    /*        for (int i = 0; i <= gridValues.Count; i++)
+            //iterate the ROW list
+            for (int i = 0; i < rowList.Count; i++)
             {
-                Console.WriteLine($"Elementul cu nr i este {i}");
-                Console.WriteLine(gridValues[i].Text);
-            }
+                //List to store the cells for each row 
+                List<IWebElement> rowCellList = rowList[i].FindElements(By.XPath("./li")).ToList();
 
-
-            string[,] matrix = new string[3, 3];
-
-            int index2 = 0;
-            for (int i = 0; i <= 2; i++)
-            {
-                //Console.WriteLine(gridValues[i].Text);
-
-                
-                Console.WriteLine($"The count is : {gridValues.Count}");
-               
-
-
-                for(int j = 0; j <=2; j++)
+                //iterate the CELL list
+                for (int j = 0; j < rowCellList.Count; j++)
                 {
-                    matrix[i, j] = gridValues[index2].Text;
-
-                    Console.WriteLine(matrix[i,j]);
+                    if (i % 2 == 0)
+                        if (j % 2 == 0)
+                        {
+                            rowCellList[j].Click();
+                            Console.WriteLine($"Clicked on {rowCellList[j].Text} cell");
+                        }
+                        else
+                        {
+                            if (j % 2 != 0)
+                            {
+                                rowCellList[j].Click();
+                                Console.WriteLine($"Clicked on {rowCellList[j].Text}");
+                            }
+                        }
                 }
             }
-*/
-            
+
+            //ASSERT for selected ROWCELL
+            By rowCellSelector = By.XPath("//div/li[contains(@class,'active')]");
+
+            //List to store the active cells
+            List<IWebElement> activeCells  =Driver.FindElements(rowCellSelector).ToList();
+
+            List<string> selectedCellsTextList = new List<string>() {"One", "Three", "Five", "Seven", "Nine" };
+
+            //iterating the list to assert the active cells
+            foreach (IWebElement rowCell in activeCells)
+            { 
+                var cellText = rowCell.Text;
+                Assert.That(selectedCellsTextList.Contains(cellText), Is.True);
+
+            }
+
 
             Thread.Sleep(5000);
         }
