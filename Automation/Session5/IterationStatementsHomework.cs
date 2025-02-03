@@ -48,13 +48,14 @@ namespace ConsoleAppETA25.Automation.Session5
             jsExecutor.ExecuteScript("window.scrollTo(0, 500);");
         }
 
+
         public void AccesSortableGrid()
         {
             IWebElement InteractionButton = Driver.FindElement(By.XPath("//*[text()=\"Interactions\"]"));
             InteractionButton.Click();
 
             List<IWebElement> ListInteractions = Driver.FindElements(By.XPath("//div[@class=\"element-list collapse show\"]/ul[@class=\"menu-list\"]/li[@class=\"btn btn-light \"]")).ToList();
-            ListInteractions[0].Click();
+            ListInteractions[1].Click();
 
             IWebElement GridButton = Driver.FindElement(By.Id("demo-tab-grid"));
             GridButton.Click();
@@ -62,7 +63,7 @@ namespace ConsoleAppETA25.Automation.Session5
         }
 
         [Test]
-    public void SortableList()
+        public void SortableList()
 
         {
             IWebElement InteractionButton = Driver.FindElement(By.XPath("//*[text()=\"Interactions\"]"));
@@ -71,7 +72,7 @@ namespace ConsoleAppETA25.Automation.Session5
             List<IWebElement> ListInteractions = Driver.FindElements(By.XPath("//div[@class=\"element-list collapse show\"]/ul[@class=\"menu-list\"]/li[@class=\"btn btn-light \"]")).ToList();
             ListInteractions[0].Click();
 
-           
+
             List<IWebElement> FirstListElements = Driver.FindElements(By.XPath("//div[@class=\"vertical-list-container mt-4\"]/div")).ToList();
             //Console.WriteLine(FirstListElements[0].Text);
 
@@ -87,58 +88,57 @@ namespace ConsoleAppETA25.Automation.Session5
         {
             AccesSortableGrid();
 
-            //select the rows
-            By rowSelector = By.XPath("//div[starts-with(@id,'row')]");
+            // Selector for rows
+            By rowsSelector = By.XPath("//div[starts-with(@id,'row')]");
 
-            //List to store the rowlist
-            List<IWebElement> rowList = Driver.FindElements(rowSelector).ToList();
+            // List to store the rows
+            List<IWebElement> rowList = Driver.FindElements(rowsSelector).ToList();
 
-            //iterate the ROW list
+            // We iterate the rows list
             for (int i = 0; i < rowList.Count; i++)
             {
-                //List to store the cells for each row 
+                // List to store the cells for each row
                 List<IWebElement> rowCellList = rowList[i].FindElements(By.XPath("./li")).ToList();
 
-                //iterate the CELL list
+                // We iterate the cells list
                 for (int j = 0; j < rowCellList.Count; j++)
                 {
                     if (i % 2 == 0)
+                    {
                         if (j % 2 == 0)
                         {
                             rowCellList[j].Click();
-                            Console.WriteLine($"Clicked on {rowCellList[j].Text} cell");
+                            Console.WriteLine($"Clicked on '{rowCellList[j].Text}' cell!");
                         }
-                        else
+                    }
+                    else
+                    {
+                        if (j % 2 != 0)
                         {
-                            if (j % 2 != 0)
-                            {
-                                rowCellList[j].Click();
-                                Console.WriteLine($"Clicked on {rowCellList[j].Text}");
-                            }
+                            rowCellList[j].Click();
+                            Console.WriteLine($"Clicked on '{rowCellList[j].Text}' cell!");
                         }
+                    }
                 }
             }
 
-            //ASSERT for selected ROWCELL
+            // Define selector for assert selected rowCell
             By rowCellSelector = By.XPath("//div/li[contains(@class,'active')]");
 
-            //List to store the active cells
-            List<IWebElement> activeCells  =Driver.FindElements(rowCellSelector).ToList();
+            // List to store the active cells
+            List<IWebElement> activeCells = Driver.FindElements(rowCellSelector).ToList();
 
-            List<string> selectedCellsTextList = new List<string>() {"One", "Three", "Five", "Seven", "Nine" };
+            List<string> selectedCellsTextList = new List<string>() { "One", "Three", "Five", "Seven", "Nine" };
 
-            //iterating the list to assert the active cells
+            // Iterating the lists to assert active cells
             foreach (IWebElement rowCell in activeCells)
-            { 
+            {
                 var cellText = rowCell.Text;
                 Assert.That(selectedCellsTextList.Contains(cellText), Is.True);
-
             }
-
 
             Thread.Sleep(5000);
         }
-
 
         [TearDown]
         public void CleanUp()
@@ -149,6 +149,10 @@ namespace ConsoleAppETA25.Automation.Session5
                 Driver.Dispose();
             }
         }
-    }
 
+    }
 }
+
+
+
+    
