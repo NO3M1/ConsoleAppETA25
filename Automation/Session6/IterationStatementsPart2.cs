@@ -45,6 +45,7 @@ namespace ConsoleAppETA25.Automation.Session6
         public void AddRemoveSubjectLoopTest(string subjectsString)
         {
             var subjects = subjectsString.Split(", ").ToList();
+
             AccessPracticeForm();
 
             // Scroll
@@ -67,6 +68,108 @@ namespace ConsoleAppETA25.Automation.Session6
             Thread.Sleep(5000);
         }
 
+        [TestCase("3;4")]
+        [TestCase("0;2;3")]
+        [TestCase("0;1;2")]
+        [TestCase("0;2")]
+        [TestCase("0;1")]
+        [TestCase("1")]
+        [TestCase("2")]
+        [TestCase("10")]
+        public void TestCheckboxWithLoop(string indexes)
+        {
+
+            var indexList = indexes.Split(";").ToList();
+            AccessPracticeForm();
+
+            jsExecutor.ExecuteScript("window.scrollTo(0, 200);");
+
+            By chekcboxSelector = By.XPath("//div[label[starts-with(@for, \"hobbies-checkbox\")]]");
+            List<IWebElement> checkboxList = Driver.FindElements(chekcboxSelector).ToList();
+
+            //Selectam elementele respective , parcurgem lista, dam click pe elemente
+
+            var i = 0;
+            while (i < indexList.Count)
+            {
+                //identificam elementul 
+                var index = Convert.ToInt16(indexList[i]);
+                if (index >  0 && index < checkboxList.Count)
+                {
+                    checkboxList[index].Click();
+
+                }
+                i++;
+                 
+            }
+
+            var j = 0;  
+            while (j < checkboxList.Count)
+            {
+                //identificam elementul 
+                var checkbox = checkboxList[j].FindElement(By.XPath("./input"));
+                var isSelected = checkbox.Selected;
+                if (isSelected == true)
+                {
+                    checkboxList[j].Click();
+                }
+                j++;
+
+
+            }
+
+            //assert
+            foreach (var checkboxDiv in checkboxList)
+            {
+                var checkbox = checkboxDiv.FindElement(By.XPath("./input"));
+                var isSelected = checkbox.Selected;
+
+                Assert.That(isSelected == false);
+            }
+
+        }
+
+        [Test]
+        public void TestCheckboxWithLoop2()
+        {
+
+            AccessPracticeForm();
+
+            jsExecutor.ExecuteScript("window.scrollTo(0, 200);");
+
+            By chekcboxSelector = By.XPath("//div[label[starts-with(@for, \"hobbies-checkbox\")]]");
+            List<IWebElement> checkboxList = Driver.FindElements(chekcboxSelector).ToList();
+
+            //Selectam elementele respective , parcurgem lista, dam click pe elemente
+
+            checkboxList[0].Click();
+            checkboxList[2].Click();
+
+            var i = 0;
+            while (i < checkboxList.Count)
+            {
+                //identificam elementul 
+                var checkbox = checkboxList[i].FindElement(By.XPath("./input"));
+                var isSelected = checkbox.Selected;
+                if (isSelected == true)
+                {
+                    checkboxList[i].Click();
+                }
+                i++;
+
+
+            }
+
+            //assert
+            foreach (var checkboxDiv in checkboxList)
+            {
+                var checkbox = checkboxDiv.FindElement(By.XPath("./input"));
+                var isSelected = checkbox.Selected;
+
+                Assert.That(isSelected == false);
+            }
+                    
+        }
 
 
         [TearDown]
