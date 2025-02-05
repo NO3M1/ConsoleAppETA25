@@ -8,7 +8,7 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 using OpenQA.Selenium;
 
-namespace ConsoleAppETA25.Automation.Session6
+namespace ConsoleAppETA25.Programing_Session6
 {
     internal class IterationStatementsPart2
 
@@ -59,7 +59,7 @@ namespace ConsoleAppETA25.Automation.Session6
 
             RemoveSubjects(subjects);
 
-          
+
 
             // Assert
             Assert.That(SubjectExists(subjects[0]) == true);
@@ -94,16 +94,16 @@ namespace ConsoleAppETA25.Automation.Session6
             {
                 //identificam elementul 
                 var index = Convert.ToInt16(indexList[i]);
-                if (index >  0 && index < checkboxList.Count)
+                if (index > 0 && index < checkboxList.Count)
                 {
                     checkboxList[index].Click();
 
                 }
                 i++;
-                 
+
             }
 
-            var j = 0;  
+            var j = 0;
             while (j < checkboxList.Count)
             {
                 //identificam elementul 
@@ -168,7 +168,7 @@ namespace ConsoleAppETA25.Automation.Session6
 
                 Assert.That(isSelected == false);
             }
-                    
+
         }
 
 
@@ -182,7 +182,7 @@ namespace ConsoleAppETA25.Automation.Session6
             }
         }
 
-        public void AddSubjects(IWebElement inputField, List<String> subjects)
+        public void AddSubjects(IWebElement inputField, List<string> subjects)
         {
             var index = 0;
             while (index < subjects.Count)
@@ -202,10 +202,10 @@ namespace ConsoleAppETA25.Automation.Session6
         public bool SubjectExists(string subjectName)
         {
             var startingXpath = "//div[contains(@class,\"multiValue\")]";
-            var  subjectWebElements = Driver.FindElements(By.XPath(startingXpath));
+            var subjectWebElements = Driver.FindElements(By.XPath(startingXpath));
             List<string> subjectsText = new List<string>();
 
-            foreach (var subject in subjectWebElements) 
+            foreach (var subject in subjectWebElements)
             {
                 subjectsText.Add(subject.Text);
             }
@@ -224,7 +224,7 @@ namespace ConsoleAppETA25.Automation.Session6
         public void RemoveSubjects(List<string> subjects)
         {
             var index = subjects.Count - 1;
-            if (index ==0)
+            if (index == 0)
             {
                 return; //ca un fel de break
             }
@@ -238,7 +238,7 @@ namespace ConsoleAppETA25.Automation.Session6
                 Console.WriteLine($"Removed the following item from the list: {subject}");
 
                 index--;
-            } while (index > 0);  
+            } while (index > 0);
 
         }
 
