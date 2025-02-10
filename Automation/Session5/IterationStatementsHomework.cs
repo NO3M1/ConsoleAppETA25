@@ -7,7 +7,7 @@ using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using System.Runtime.ConstrainedExecution;
-using OpenQA.Selenium.DevTools.V129.Debugger;
+//using OpenQA.Selenium.DevTools.V129.Debugger;
 
 namespace ConsoleAppETA25.Automation.Session5
 {
