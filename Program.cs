@@ -2,6 +2,7 @@
 using ConsoleAppETA25;
 
 
+#region Older Sessions
 
 
 
@@ -122,7 +123,137 @@ Console.WriteLine(" ");
 //PersonTest2.ConsoleDetails();
 //PersonTest2.DisplayUserDetails();    
 
+#endregion
+
+#region ETA - Session 16 
+
+//int[] numbers = new int[2] { 1, 2 };
+int[] numbers = [1, 2, 3, 4, 5];
+string[] words = { "one", "two", "tree", "ten" };
+
+string[] letters = { "A", "R", "R", "A", "Y", "S" };
+string firstItem = letters[0];
+string secondItem = letters[1];
+
+Console.WriteLine($"The first item is: {firstItem}");
+Console.WriteLine($"The second item is: {secondItem}");
+
+string thridItem = letters[2];
+Console.WriteLine($"The third item is: {thridItem}");
+letters[2] = "X";
+Console.WriteLine($"The updated third item is: {letters[2]}");
+
+Console.Write("The 'letters' array consist of ");
+for (int i =0; i < letters.Length; i++)
+{
+    Console.Write($"{letters[i]}; ");  //ARXAYS
+}
+Console.WriteLine();
+Console.WriteLine("Multidimensional arrays (2D)");
+
+//MULTIDIMIENSIONAL ARRAY (2D)
+
+int[,] numbersMultiDim = new int[3, 4] { { 1, 2, 3, 4 }, {5, 6, 7, 8 }, {9, 10, 11, 12 } };
+Console.WriteLine($"The second row - third cell is: {numbersMultiDim[1,2]}\n");
+Console.WriteLine("The elements in the 2D are:");
+
+//i = rand (3)
+//j = coloana (4) 
+
+/*for (int i =0; i < 3; i++) // or i<numbersmultidim.lenght 
+{
+    for (int j = 0; j < 4; j++)
+    {
+        Console.Write($"Array[{i},{j}]: {numbersMultiDim[i, j]}   ");
+    }
+    Console.WriteLine("\n");
+}*/
+
+for (int i = 0; i < numbersMultiDim.GetLength(0); i++)
+{
+    Console.WriteLine("The size ofthe rows is: " + numbersMultiDim.GetLength(1));
+
+    for (int j = 0; j < numbersMultiDim.GetLength(1); j++)
+    {
+        Console.Write($"Array[{i},{j}]: {numbersMultiDim[i, j]}   ");
+    }
+    Console.WriteLine("\n");
+}
+
+//JAGGED ARRAY
+
+/*int[][] jaggedArray = new int[4][]
+{
+   new int[] { 1, 2, 3 },
+   new int[] { 4, 5},
+   new int[] { 6, 7, 8, 9},
+   new int[] { 10 }
+
+}*/
+
+int[][] jaggedArray =
+    [
+        [1, 2, 3],
+        [4, 5],
+        [6, 7, 8, 9],
+        [10]
+    ];
+
+Console.WriteLine("The contents of the jagged array");
+for (int i = 0; i< jaggedArray.Length; i ++)
+{
+    Console.WriteLine($"The current row size is {jaggedArray[i].GetLength(0)}");
+    for (int j = 0; j < jaggedArray[i].GetLength(0); j++)
+    {
+        Console.WriteLine($"array[{i}][{j}]: {jaggedArray[i][j]}  ");
+    }
+    Console.WriteLine("\n");
+}
+
+
+// LISTS
+
+List<string> letterList = new List<string>() { "L", "I", "S", "T"};
+
+Console.WriteLine($"First item in the list: {letterList[0]}");
+Console.WriteLine($"Third item in the list: {letterList.ElementAt(2)}");
+letterList[2] = "Z";
+Console.WriteLine($"Third item in the list: {letterList.ElementAt(2)}");
+
+Console.WriteLine("\n The list contains the following items: ");
+foreach(string letter in letterList)
+{
+    Console.WriteLine($"{letter}; ");
+}
+
+Console.WriteLine();
+Console.WriteLine($"The list size and capacity are: {letterList.Count} / {letterList.Capacity}");
+letterList.Add("B");
+foreach (string letter in letterList)
+{
+    Console.WriteLine($"{letter}; ");
+}
+
+Console.WriteLine($"The list size and capacity are: {letterList.Count} / { letterList.Capacity}");
+letterList.Add("C");
+foreach (string letter in letterList)
+{
+    Console.WriteLine($"{letter}; ");
+}
+
+Console.WriteLine($"The list size and capacity are: {letterList.Count} / {letterList.Capacity}");
+letterList.Remove("I");
+
+foreach (string letter in letterList)
+{
+    Console.WriteLine($"{letter}; ");
+}
+Console.WriteLine($"The list size and capacity are: {letterList.Count} / {letterList.Capacity}");
 
 
 
- Console.ReadKey();
+
+
+#endregion
+
+Console.ReadKey();
