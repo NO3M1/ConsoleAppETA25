@@ -127,6 +127,8 @@ Console.WriteLine(" ");
 
 #region ETA - Session 16 
 
+//ARRAYS
+
 //int[] numbers = new int[2] { 1, 2 };
 int[] numbers = [1, 2, 3, 4, 5];
 string[] words = { "one", "two", "tree", "ten" };
@@ -212,7 +214,7 @@ for (int i = 0; i< jaggedArray.Length; i ++)
 
 
 // LISTS
-
+/*
 List<string> letterList = new List<string>() { "L", "I", "S", "T"};
 
 Console.WriteLine($"First item in the list: {letterList[0]}");
@@ -250,8 +252,81 @@ foreach (string letter in letterList)
 }
 Console.WriteLine($"The list size and capacity are: {letterList.Count} / {letterList.Capacity}");
 
+*/
+#endregion
 
 
+
+#region Homework
+
+/*Write a C# console app that reads from the user a list of N numbers and then prints the following:
+•
+The list of items
+•
+The list of even items and then the list of odd items (as separate lists)
+•
+Calculates the sum of all the even numbers
+•
+Calculates the sum of all the odd numbers*/
+
+//Get the size of the list
+
+Console.Write("Please input the size of the list (N):");
+int size = int.Parse(Console.ReadLine());
+
+//List to store the numbers
+
+List<int> numbersList = new List<int>();
+
+for (int i = 0; i < size; i++)
+{
+    Console.Write($"Please input a number for list [{i}]: ");
+    int num = int.Parse(Console.ReadLine());
+    numbersList.Add(num);
+}
+
+// Display the list
+Console.Write($"Your list contains the following items/numbers: "); 
+foreach (int num in numbersList)
+{
+    Console.Write($"{num}" + "; ");
+}
+
+// List of even and odd numbers
+List<int> evenNumbers = new List<int>();
+List<int> oddNumbers = new List<int>();
+
+foreach (int num in numbersList)
+{
+    if ( num % 2 == 0 ) // ex 2,4,6,8
+    {
+        evenNumbers.Add(num);
+    }
+    else
+    {
+        oddNumbers.Add(num);
+    }
+}
+
+//Display the even and odd numbers list
+Console.WriteLine("\nThe list of even number is: ");
+foreach (int num in evenNumbers)
+{
+    Console.Write($"{num}" + "; ");
+}
+
+Console.WriteLine("\nThe list of odd number is: ");
+foreach (int num in oddNumbers)
+{
+    Console.Write(($"{num}" + "; "));
+}
+
+//Calculates tge sum of even numbers
+int sumEvenNumbers = evenNumbers.Sum();
+Console.WriteLine($"\n The sum of the Even numbers is: {sumEvenNumbers}");
+
+int sumOddNumbers = oddNumbers.Sum();
+Console.WriteLine($"\n The sum of the Odd numbers is: {sumOddNumbers}");
 
 
 #endregion
