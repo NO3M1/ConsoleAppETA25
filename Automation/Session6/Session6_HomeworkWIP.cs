@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleAppETA25.Automation.Session6
 {
-    internal class Session6_Homework
+    internal class Session6_HomeworkWIP
     {
 
         /*Similar cu ce am facut astazi, tema va necesita interactiunea cu mecanismele disponibile din SeleniumWebDriver:
