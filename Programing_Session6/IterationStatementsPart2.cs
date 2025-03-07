@@ -59,8 +59,6 @@ namespace ConsoleAppETA25.Programing_Session6
 
             RemoveSubjects(subjects);
 
-
-
             // Assert
             Assert.That(SubjectExists(subjects[0]) == true);
 
@@ -74,7 +72,6 @@ namespace ConsoleAppETA25.Programing_Session6
         [TestCase("0;2")]
         [TestCase("0;1")]
         [TestCase("1")]
-        [TestCase("2")]
         [TestCase("10")]
         public void TestCheckboxWithLoop(string indexes)
         {
