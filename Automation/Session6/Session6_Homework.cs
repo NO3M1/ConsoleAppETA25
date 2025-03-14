@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using NUnit.Framework;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
+//using SeleniumExtras.WaitHelpers.ExpectedConditions;
+
+
 
 namespace ConsoleAppETA25.Automation.Session6
 {
@@ -41,6 +45,7 @@ namespace ConsoleAppETA25.Automation.Session6
 
             // Define jsExecutor
             IJavaScriptExecutor jsExecutor;
+            private object ExpectedConditions;
 
             [SetUp]
             public void Setup()
@@ -115,6 +120,7 @@ namespace ConsoleAppETA25.Automation.Session6
                 Assert.That(alertText, Is.EqualTo(validationText));
 
                 alert.Dismiss();
+                //alert.Accept();
 
                 Thread.Sleep(5000);
             }
@@ -127,7 +133,14 @@ namespace ConsoleAppETA25.Automation.Session6
                 IWebElement fiveSecButton = Driver.FindElement(fiveSecButtonSelector);  
                 fiveSecButton.Click();
 
-                Thread.Sleep(5000);
+                //Thread.Sleep(5000);
+
+                
+                //explicit wait 
+/*                WebDriverWait wait  = new WebDriverWait(Driver, TimeSpan.FromSeconds(10));
+                object value = wait.Until(ExpectedConditions.AlertIsPresent);*/
+        
+
 
                 var fiveSecAlert = Driver.SwitchTo().Alert();   
 
@@ -139,6 +152,7 @@ namespace ConsoleAppETA25.Automation.Session6
                 Thread.Sleep(1000);
 
                 fiveSecAlert.Dismiss();
+                //fiveSecAlert.Accept();
 
                 Thread.Sleep(1000);
 
