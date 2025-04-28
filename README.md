@@ -1,1 +1,1 @@
-Beginner Mentorshit program .NET
+Beginner Mentorship program .NET
